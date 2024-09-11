@@ -14,13 +14,13 @@ function Slider({ sliderData, onPopup, onNextSlide, onPrevSlide, slideIndex, isL
   return (
     <div className={`flex flex-col ${cssCls}`} ref={sliderRef}>
       <div className={`relative`}>
-        <Button cssClasses={`text-white hover:text-primary absolute md:-right-4 md:-top-14 ${crossIconStyle}`} onClick={onPopup}><CloseIcon /></Button>
+        <Button ariaLabel='Close lightbox' cssClasses={`text-white hover:text-primary absolute md:-right-4 md:-top-14 ${crossIconStyle}`} onClick={onPopup}><CloseIcon /></Button>
         <div className={`md:rounded-2xl aspect-video md:aspect-square overflow-hidden ${isLightbox ? 'pointer-events-none' : 'md:cursor-pointer'}`} onClick={onPopup}>
           <img src={images[slideIndex]} alt='Image' className='transition-all aspect-[inherit] object-cover object-top' />
         </div>
         <div className='absolute -mt-4 md:mt-0 w-full top-1/2 -translate-y-1/2 left-0 flex justify-between'>
-          <Button cssClasses={`${navBtnStyling} md:-left-6 left-2`} onClick={() => onPrevSlide(slideIndex)}><PrevIcon /></Button>
-          <Button cssClasses={`${navBtnStyling} md:-right-6 right-2`} onClick={() => onNextSlide(slideIndex)}><NextIcon /></Button>
+          <Button ariaLabel='Previus slide' cssClasses={`${navBtnStyling} md:-left-6 left-2`} onClick={() => onPrevSlide(slideIndex)}><PrevIcon /></Button>
+          <Button ariaLabel='Next slide' cssClasses={`${navBtnStyling} md:-right-6 right-2`} onClick={() => onNextSlide(slideIndex)}><NextIcon /></Button>
         </div>
       </div>
       <ul className='hidden md:flex items-start justify-between xl:gap-10 gap-3'>

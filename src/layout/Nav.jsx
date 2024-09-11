@@ -10,7 +10,7 @@ function Nav() {
 
   return (
     <nav className={`fixed md:static top-0 bg-white w-60 md:w-full h-screen md:h-auto z-30 md:z-0 md:block transition-all duration-300 ease-in-out  ${showMenu ? 'left-0' : '-left-full'}`}>
-      <Button cssClasses='text-blue-700 pt-5 mb-10 md:hidden' onClick={onMenuToggle}>
+      <Button ariaLabel='Close menu' cssClasses='text-blue-700 pt-5 mb-10 md:hidden' onClick={onMenuToggle}>
         <CloseIcon />
       </Button>
       <ul className='flex-col md:flex-row pl-6'>

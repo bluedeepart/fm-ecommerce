@@ -23,7 +23,7 @@ function CartItem({ productInCart }) {
             <span className='text-blue-900'><strong>{currencyFormatter(discountAmount * itemCount)}</strong></span>
           </p>
         </div>
-        <Button cssClasses='text-blue-400 hover:text-primary px-0' onClick={() => onRemoveCart(id)}>
+        <Button cssClasses='text-blue-400 hover:text-primary px-0' ariaLabel='Delete Item' onClick={() => onRemoveCart(id)}>
           <DeleteIcon />
         </Button>
       </div>

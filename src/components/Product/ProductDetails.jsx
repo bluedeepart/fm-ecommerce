@@ -36,15 +36,15 @@ function ProductDetails({ data }) {
 
       <div className='flex md:flex-row flex-col items-center gap-6 md:mt-10 mt-5'>
         <div className='md:flex grid grid-cols-3 items-center md:justify-start w-full'>
-          <Button cssClasses={`bg-blue-200 min-h-12 flex items-center px-5 rounded-r-none text-primary hover:text-secondary ${count === 0 ? 'pointer-events-none text-secondary' : ''}`} onClick={counterDecrement}>
+          <Button ariaLabel='Decrement Counter' cssClasses={`bg-blue-200 min-h-12 flex items-center px-5 rounded-r-none text-primary hover:text-secondary ${count === 0 ? 'pointer-events-none text-secondary' : ''}`} onClick={counterDecrement}>
             <MinusIcon />
           </Button>
           <p className='bg-blue-200 min-h-12 flex items-center px-5 font-bold justify-center'>{count}</p>
-          <Button cssClasses={`bg-blue-200 min-h-12 flex items-center px-5 rounded-l-none text-primary hover:text-secondary ${count === 10 ? 'pointer-events-none text-secondary' : ''}`} onClick={counterIncrement}>
+          <Button ariaLabel='Increment Counter' cssClasses={`bg-blue-200 min-h-12 flex items-center px-5 rounded-l-none text-primary hover:text-secondary ${count === 10 ? 'pointer-events-none text-secondary' : ''}`} onClick={counterIncrement}>
             <PlusIcon />
           </Button>
         </div>
-        <Button type='primary' onClick={() => onAddToCart(data, count)}><CartIcon fillColor='currentColor' /> Add to cart</Button>
+        <Button ariaLabel='Add to cart' type='primary' onClick={() => onAddToCart(data, count)}><CartIcon fillColor='currentColor' /> Add to cart</Button>
       </div>
     </div>
   );

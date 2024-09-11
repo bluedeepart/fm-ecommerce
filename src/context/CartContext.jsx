@@ -10,6 +10,7 @@ const INITIALISE_VALUES = {
   cartItems: [],
   cartRef: null,
   cartTogglerRef: null,
+  totalItemsCounts: 0,
   onCartToggle: () => { },
   onAddToCart: () => { },
   onRemoveCart: () => { },
@@ -22,6 +23,7 @@ export const CartContentProvider = ({ children }) => {
   const [showCart, setShowCart] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [totalItemsCounts, setTotalItemsCounts] = useState(0);
   const cartRef = useRef();
   const cartTogglerRef = useRef();
 
@@ -42,17 +44,23 @@ export const CartContentProvider = ({ children }) => {
     setCartItems(prevItems => {
       const newItemIndex = prevItems.findIndex(item => item.id === data.id);
       const newItem = { ...data, itemCount: count };
-      const updatedItems = [...prevItems];
+      let updatedItems = [...prevItems];
+      let updatedItemCount = 0;
+
       if (newItemIndex > -1) {
-        updatedItems[newItemIndex] = newItem;
+        updatedItemCount = updatedItems[newItemIndex].itemCount;
         if (count === 0) {
           updatedItems.splice(newItemIndex, 1);
+        } else {
+          updatedItems[newItemIndex] = newItem;
         }
-        return updatedItems;
       }
       if (count > 0) {
-        return [...updatedItems, newItem];
+        updatedItems = [...updatedItems, newItem];
       }
+
+      const countDifference = count - updatedItemCount;
+      setTotalItemsCounts(prevcount => prevcount + countDifference);
 
       return updatedItems;
     });
@@ -82,6 +90,7 @@ export const CartContentProvider = ({ children }) => {
     cartItems,
     cartRef,
     cartTogglerRef,
+    totalItemsCounts,
     onCartToggle: cartHandler,
     onAddToCart: handleAddToCart,
     onRemoveCart: handlerRemoveFromCart,
